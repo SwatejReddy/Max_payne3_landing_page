@@ -1,15 +1,22 @@
 body {
-  background-image: url("images/img1.jpg");
+  /* background-image: url("images/img1.jpg"); */
   /* overflow: hidden; */
-  background-repeat: no-repeat;
-  background-size: cover;
   margin: 0px 0px 0px 0px;
   font-weight: bold;
   /* position: fixed; */
 }
 
+.bg-img {
+  position: fixed;
+  /* background-size: cover; */
+  object-fit: cover;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+
 .hero {
-  /* position: absolute; */
   display: grid;
   grid-template-columns: 0.6fr 2fr;
   height: 100vh;
@@ -18,15 +25,14 @@ body {
 
 .content {
   height: 100%;
-  /* width: 100%; */
-  /* background-color: green; */
 }
 
 .menu {
+  position: relative;
   height: 100%;
-
-  /* width: 50%; */
+  width: 280px;
   background-color: rgba(0, 0, 0, 0.307);
+  z-index: 1;
 }
 
 .menu-top {
@@ -34,7 +40,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 15px 0px 0px -15px;
+  margin: 15px 0px 0px 0px;
 }
 
 .outnow {
@@ -64,37 +70,31 @@ li {
   align-items: center;
   margin-right: 15px;
   transition: background-color 0.2s;
+  position: relative;
 }
 
-.option-bar-div:hover {
-  background-color: rgba(194, 194, 194, 0.479);
-}
-
-/* .option-bar-div:hover ~ .overlay-div {
-  animation: overlayAnimation 2s infinite;
-} */
-/* 
-.overlay-div {
-  background-color: rgba(194, 194, 194, 0.479);
+.option-bar-div::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  transform: translateX(-100%);
-} */
+  background: rgba(255, 255, 255, 0.421);
+  z-index: -1;
+  transform-origin: 0 0;
+  transition: 0.2s;
+}
+/* should just appear on hover directly and then go to left slowly */
 
-/* @keyframes overlayAnimation {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-} */
+.option-bar-div::before {
+  transform: scaleX(0);
+}
+.option-bar-div:hover::before {
+  transform: scaleX(1);
+}
 
-/* .option-bar-div:active {
-  background-color: blue;
-} */
-
-.option-text {
+.option-bar-div > .option-text {
   margin-left: 9px;
 }
 
@@ -128,4 +128,8 @@ li {
 
 .menu-footer > img {
   margin-left: 10px;
+}
+
+.content {
+  position: relative;
 }
