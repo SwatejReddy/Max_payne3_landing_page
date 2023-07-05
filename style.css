@@ -4,6 +4,7 @@ body {
   margin: 0px 0px 0px 0px;
   font-weight: bold;
   /* position: fixed; */
+  height: 100vh;
 }
 
 .bg-img {
@@ -19,7 +20,7 @@ body {
 .hero {
   display: grid;
   grid-template-columns: 0.6fr 2fr;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
